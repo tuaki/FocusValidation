@@ -44,10 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseValidator.cs" />
-    <Compile Include="DoubleValidator.cs" />
+    <Compile Include="DoubleValidators.cs" />
     <Compile Include="InputProvider.cs" />
-    <Compile Include="BoolValidator.cs" />
-    <Compile Include="IntValidator.cs" />
+    <Compile Include="BoolValidators.cs" />
+    <Compile Include="IntValidators.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

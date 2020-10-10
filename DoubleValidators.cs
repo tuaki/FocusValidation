@@ -6,8 +6,5 @@ using System.Threading.Tasks;
 
 namespace FocusValidation
 {
-    abstract class DoubleValidator : BaseValidator
-    {
-        public virtual double Evaluate() => 0;
-    }
+
 }

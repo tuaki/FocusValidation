@@ -30,6 +30,11 @@ namespace FocusValidation
         }
     }
 
+    abstract class BaseValidator<T> : BaseValidator
+    {
+        public virtual T Evaluate() => default;
+    }
+
     [Serializable]
     public class BadValidatorTypeException : Exception
     {

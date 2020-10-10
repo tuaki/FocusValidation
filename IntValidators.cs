@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace FocusValidation
 {
-    abstract class IntValidator : BaseValidator
-    {
-        public virtual int Evaluate() => 0;
-    }
-
-    class IntInputValidator : IntValidator
+    class IntInputValidator : BaseValidator<int>
     {
         private Input<int> input;
 
@@ -26,15 +21,15 @@ namespace FocusValidation
         }
     }
 
-    class IntSumValidator : IntValidator
+    class IntSumValidator : BaseValidator<int>
     {
-        private List<IntValidator> childValidators;
+        private List<BaseValidator<int>> childValidators;
 
         protected override void SetChildValidators(List<BaseValidator> inputChildValidators)
         {
             foreach (var childValidator in inputChildValidators)
             {
-                if (childValidator is IntValidator intChildValidator)
+                if (childValidator is BaseValidator<int> intChildValidator)
                     childValidators.Add(intChildValidator);
                 else
                     throw new BadValidatorTypeException();

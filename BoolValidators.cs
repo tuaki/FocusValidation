@@ -6,20 +6,15 @@ using System.Threading.Tasks;
 
 namespace FocusValidation
 {
-    abstract class BoolValidator : BaseValidator
+    class AndValidator : BaseValidator<bool>
     {
-        public virtual bool Evaluate() => false;
-    }
-
-    class AndValidator : BoolValidator
-    {
-        private List<BoolValidator> childValidators;
+        private List<BaseValidator<bool>> childValidators;
 
         protected override void SetChildValidators(List<BaseValidator> inputChildValidators)
         {
             foreach (var childValidator in inputChildValidators)
             {
-                if (childValidator is BoolValidator boolChildValidator)
+                if (childValidator is BaseValidator<bool> boolChildValidator)
                     childValidators.Add(boolChildValidator);
                 else
                     throw new BadValidatorTypeException();
@@ -36,9 +31,9 @@ namespace FocusValidation
         }
     }
 
-    class IntConverterValidator : BoolValidator
+    class IntConverterValidator : BaseValidator<bool>
     {
-        private List<IntValidator> childValidators;
+        private List<BaseValidator<int>> childValidators;
 
         protected override void SetChildValidators(List<BaseValidator> inputChildValidators)
         {
@@ -47,7 +42,7 @@ namespace FocusValidation
 
             foreach (var childValidator in inputChildValidators)
             {
-                if (childValidator is IntValidator intChildValidator)
+                if (childValidator is BaseValidator<int> intChildValidator)
                     childValidators.Add(intChildValidator);
                 else
                     throw new BadValidatorTypeException();
